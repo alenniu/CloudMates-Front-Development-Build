@@ -1,0 +1,24 @@
+.menuWrapper p {
+    font-size: 150%;
+
+}
+
+#price1 {
+    height: 30vh;
+}
+
+#price1::before {
+    content: '';
+    position: absolute;
+    z-index: -2;
+    left: -50%;
+    top: -50%;
+    width: 200%;
+    height: 200%;
+    background-color: #399953;
+    background-repeat: no-repeat;
+    background-size: 50% 50%, 50% 50%;
+    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+    background-image: linear-gradient(#7EF9FF, #7EF9FF), linear-gradient(#3FE0D0, #3FE0D0), linear-gradient(#B0DFE5, #B0DFE5), linear-gradient(#377af5, #377af5);
+    animation: rotate 8s linear infinite;
+}

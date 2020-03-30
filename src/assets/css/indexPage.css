@@ -1,0 +1,25 @@
+.range {
+    display: none;
+}
+
+.current {
+    margin-top: 8%;
+    margin-bottom: 8%;
+}
+
+.rw-today {
+    height: 40vh;
+}
+
+html,
+body,
+#app,
+#app>div {
+    height: 100%
+}
+
+html,
+body,
+#root {
+    height: 100%;
+}
