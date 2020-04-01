@@ -47,7 +47,7 @@ class Register extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    fetch('/api/auth/register', {
+    fetch('http://localhost:8080/api/auth/register', {
       method: 'POST',
       body: JSON.stringify(this.state),
       headers: {

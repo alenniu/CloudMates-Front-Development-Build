@@ -54,8 +54,8 @@ class UserProfile extends React.Component {
     console.log(this.props.name)
     let name = localStorage.getItem("username");
     console.log(name)
-    console.log(`/api/users?name=${name}`)
-    axios.get(`/api/users?name=${name}`,{
+    console.log(`http://localhost:8080/api/users?name=${name}`)
+    axios.get(`http://localhost:8080/api/users?name=${name}`,{
       headers: {
         Authorization: localStorage.getItem('token')
       }
@@ -82,7 +82,7 @@ class UserProfile extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    axios.patch(`/api/users/${this.state.current_user._id}`, {
+    axios.patch(`http://localhost:8080/api/users/${this.state.current_user._id}`, {
       password: this.state.password
     },{
       headers: {
@@ -99,7 +99,7 @@ class UserProfile extends React.Component {
 
   onDescription = (event) => {
     event.preventDefault();
-    axios.patch(`/api/users/${this.state.current_user._id}`, {
+    axios.patch(`http://localhost:8080/api/users/${this.state.current_user._id}`, {
       description: this.state.description
     },{
       headers: {
@@ -133,7 +133,7 @@ class UserProfile extends React.Component {
                         <img
                           alt="..."
                           className="rounded-circle"
-                          src={`https://ui-avatars.com/api/?size=160&background=0D8ABC&color=fff&bold=true&name=${this.props.name}`}
+                          src={`https://ui-avatars.comhttp://localhost:8080/api/?size=160&background=0D8ABC&color=fff&bold=true&name=${this.props.name}`}
                         />
                       </a>
                     </div>

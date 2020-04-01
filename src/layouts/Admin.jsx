@@ -78,7 +78,7 @@ return newRoutes
     }else {
       console.log(token)
       
-      axios.get(`/api/auth/checkToken`,{
+      axios.get(`http://localhost:8080/api/auth/checkToken`,{
         headers: {
           Authorization: token
         }

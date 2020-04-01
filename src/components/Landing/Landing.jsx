@@ -27,7 +27,7 @@ class Landing extends React.Component {
     
 
     // componentWillMount() {
-    //     axios.get('/api/lunchMenus/')
+    //     axios.get('http://localhost:8080/api/lunchMenus/')
     //         .then((res)=> {
     //             if(res.status === 200) {
     //                 this.setState({

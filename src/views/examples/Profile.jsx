@@ -89,7 +89,7 @@ class Profile extends React.Component {
     console.log(id);
 
     axios
-      .get(`/api/users/${id}`, {
+      .get(`http://localhost:8080/api/users/${id}`, {
         headers: {
           Authorization: localStorage.getItem("token")
         }
@@ -110,9 +110,9 @@ class Profile extends React.Component {
       });
 
     console.log(this.props.name);
-    console.log(`/api/users?name=${localStorage.getItem("username")}`);
+    console.log(`http://localhost:8080/api/users?name=${localStorage.getItem("username")}`);
     axios
-      .get(`/api/users?name=${localStorage.getItem("username")}`, {
+      .get(`http://localhost:8080/api/users?name=${localStorage.getItem("username")}`, {
         headers: {
           Authorization: localStorage.getItem("token")
         }
@@ -146,7 +146,7 @@ class Profile extends React.Component {
     event.preventDefault();
     axios
       .patch(
-        `/api/users/${this.state.current_user._id}`,
+        `http://localhost:8080/api/users/${this.state.current_user._id}`,
         {
           password: this.state.password
         },
@@ -177,7 +177,7 @@ class Profile extends React.Component {
       console.log(id);
       axios
         .patch(
-          `/api/users/${id}`,
+          `http://localhost:8080/api/users/${id}`,
           {
             points: this.state.userPoints
           },
@@ -191,7 +191,7 @@ class Profile extends React.Component {
           if (res.status === 200) {
             console.log("Points updated successfully");
             axios
-              .get(`/api/users/${id}`, {
+              .get(`http://localhost:8080/api/users/${id}`, {
                 headers: {
                   Authorization: localStorage.getItem("token")
                 }
@@ -215,7 +215,7 @@ class Profile extends React.Component {
       console.log(id);
       axios
         .patch(
-          `/api/users/${id}`,
+          `http://localhost:8080/api/users/${id}`,
           {
             level: this.state.userLevel
           },
@@ -229,7 +229,7 @@ class Profile extends React.Component {
           if (res.status === 200) {
             console.log("Points updated successfully");
             axios
-              .get(`/api/users/${id}`, {
+              .get(`http://localhost:8080/api/users/${id}`, {
                 headers: {
                   Authorization: localStorage.getItem("token")
                 }
@@ -253,7 +253,7 @@ class Profile extends React.Component {
       console.log(id);
       axios
         .patch(
-          `/api/users/${id}`,
+          `http://localhost:8080/api/users/${id}`,
           {
             userType: this.state.userType
           },
@@ -267,7 +267,7 @@ class Profile extends React.Component {
           if (res.status === 200) {
             console.log("Points updated successfully");
             axios
-              .get(`/api/users/${id}`, {
+              .get(`http://localhost:8080/api/users/${id}`, {
                 headers: {
                   Authorization: localStorage.getItem("token")
                 }
@@ -424,7 +424,7 @@ class Profile extends React.Component {
                         <img
                           alt="..."
                           className="rounded-circle"
-                          src={`https://ui-avatars.com/api/?size=160&background=0D8ABC&color=fff&bold=true&name=${this.state.current_user.name}`}
+                          src={`https://ui-avatars.comhttp://localhost:8080/api/?size=160&background=0D8ABC&color=fff&bold=true&name=${this.state.current_user.name}`}
                         />
                       </a>
                     </div>

@@ -45,7 +45,7 @@ class Stewards extends React.Component {
   };
 
   componentWillMount() {
-    axios.get('/api/stewards/')
+    axios.get('http://localhost:8080/api/stewards/')
       .then((res) => {
         if (res.status === 200) {
           this.setState({ data: res.data.stewardsAnnounce })
@@ -54,8 +54,8 @@ class Stewards extends React.Component {
 
       let name = localStorage.getItem("username");
     console.log(name)
-    console.log(`/api/users?name=${name}`)
-    axios.get(`/api/users?name=${name}`,{
+    console.log(`http://localhost:8080/api/users?name=${name}`)
+    axios.get(`http://localhost:8080/api/users?name=${name}`,{
       headers: {
         Authorization: localStorage.getItem('token')
       }
@@ -77,7 +77,7 @@ class Stewards extends React.Component {
     return e => {
       e.preventDefault()
       console.log(x, id)
-      fetch(`/api/stewards/${id}`, {
+      fetch(`http://localhost:8080/api/stewards/${id}`, {
         method: 'PUT',
         body: JSON.stringify({
           "title": this.state.title,

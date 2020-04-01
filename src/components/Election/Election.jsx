@@ -37,7 +37,7 @@ class Election extends React.Component {
     
 
   updateElectionInfo() {
-    axios.get('/api/elections/',{
+    axios.get('http://localhost:8080/api/elections/',{
       headers: {
         Authorization: localStorage.getItem('token')
       }
@@ -47,7 +47,7 @@ class Election extends React.Component {
                 let election = res.data.elections[0];
                 this.setState({election})
                 let election_id = election._id;
-                axios.get(`/api/elections/${election_id}/participants`,{
+                axios.get(`http://localhost:8080/api/elections/${election_id}/participants`,{
                   headers: {
                     Authorization: localStorage.getItem('token')
                   }
@@ -77,7 +77,7 @@ class Election extends React.Component {
           this.setState({failedVoted: true})
             return 
         }
-        axios.patch(`/api/elections/${this.state.election._id}/participants/${participant._id}`, {
+        axios.patch(`http://localhost:8080/api/elections/${this.state.election._id}/participants/${participant._id}`, {
             votes: participant.votes + 1,
             voters: participant.voters.concat([this.props.name])
         },{

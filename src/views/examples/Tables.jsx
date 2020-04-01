@@ -68,7 +68,7 @@ class Tables extends React.Component {
   componentWillMount() {
     console.log("THIS IS HERE");
     axios
-      .get("/api/posts/", {
+      .get("http://localhost:8080/api/posts/", {
         headers: {
           Authorization: localStorage.getItem("token")
         }
@@ -83,7 +83,7 @@ class Tables extends React.Component {
           console.log("Unable to get all posts");
         }
         axios
-          .get(`/api/users?name=${this.props.name}`, {
+          .get(`http://localhost:8080/api/users?name=${this.props.name}`, {
             headers: {
               Authorization: localStorage.getItem("token")
             }
@@ -123,7 +123,7 @@ class Tables extends React.Component {
     event.preventDefault();
     axios
       .post(
-        `/api/posts/`,
+        `http://localhost:8080/api/posts/`,
         {
           username: this.props.name,
           title: this.state.new_post_title,
@@ -147,7 +147,7 @@ class Tables extends React.Component {
     this.toggle();
     // TODO: Simplify
     axios
-      .get(`/api/posts/`, {
+      .get(`http://localhost:8080/api/posts/`, {
         headers: {
           Authorization: localStorage.getItem("token")
         }
@@ -173,7 +173,7 @@ class Tables extends React.Component {
     // return;
 
     axios
-      .delete(`/api/posts/${post_id}`, {
+      .delete(`http://localhost:8080/api/posts/${post_id}`, {
         headers: {
           Authorization: localStorage.getItem("token")
         }
@@ -192,7 +192,7 @@ class Tables extends React.Component {
           // }
 
           axios
-            .get(`https://localhost:8080/api/posts`)
+            .get(`https://localhost:8080http://localhost:8080/api/posts`)
             .then(res => {
               if (res.status === 200) {
                 const data = res.data;
@@ -211,7 +211,7 @@ class Tables extends React.Component {
     console.log("RESOLVE");
     axios
       .patch(
-        `/api/posts/${post_id}`,
+        `http://localhost:8080/api/posts/${post_id}`,
         {
           resolved: true
         },
@@ -225,7 +225,7 @@ class Tables extends React.Component {
         if (res.status === 200) {
           // this.changeUserPoints(-1)
           axios
-            .get(`/api/posts`, {
+            .get(`http://localhost:8080/api/posts`, {
               headers: {
                 Authorization: localStorage.getItem("token")
               }
@@ -251,7 +251,7 @@ class Tables extends React.Component {
 
     axios
       .patch(
-        `/api/posts/${post_id}`,
+        `http://localhost:8080/api/posts/${post_id}`,
         {
           readOnly: true
         },
@@ -265,7 +265,7 @@ class Tables extends React.Component {
         if (res.status === 200) {
           // this.changeUserPoints(-1)
           axios
-            .get(`/api/posts`, {
+            .get(`http://localhost:8080/api/posts`, {
               headers: {
                 Authorization: localStorage.getItem("token")
               }
@@ -290,7 +290,7 @@ class Tables extends React.Component {
     console.log(post_id);
     axios
       .patch(
-        `/api/posts/${post_id}`,
+        `http://localhost:8080/api/posts/${post_id}`,
         {
           readOnly: false
         },
@@ -304,7 +304,7 @@ class Tables extends React.Component {
         if (res.status === 200) {
           // this.changeUserPoints(-1)
           axios
-            .get(`/api/posts`, {
+            .get(`http://localhost:8080/api/posts`, {
               headers: {
                 Authorization: localStorage.getItem("token")
               }
@@ -326,7 +326,7 @@ class Tables extends React.Component {
   changeUserPoints(delta, post_username) {
     let user_name = post_username;
     axios
-      .get(`/api/users?name=${user_name}`, {
+      .get(`http://localhost:8080/api/users?name=${user_name}`, {
         headers: {
           Authorization: localStorage.getItem("token")
         }
@@ -340,7 +340,7 @@ class Tables extends React.Component {
             let new_points = user_found.points + delta;
             axios
               .patch(
-                `/api/users/${user_id}`,
+                `http://localhost:8080/api/users/${user_id}`,
                 { points: new_points },
                 {},
                 {
@@ -371,7 +371,7 @@ class Tables extends React.Component {
       console.log("CHAGING COLOR")
       axios
       .patch(
-        `/api/posts/${post_id}`,
+        `http://localhost:8080/api/posts/${post_id}`,
         {
           color: this.state.color
         },
@@ -385,7 +385,7 @@ class Tables extends React.Component {
         if (res.status === 200) {
           // this.changeUserPoints(-1)
           axios
-            .get(`/api/posts`, {
+            .get(`http://localhost:8080/api/posts`, {
               headers: {
                 Authorization: localStorage.getItem("token")
               }

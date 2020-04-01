@@ -120,7 +120,7 @@ class Index extends React.Component {
 //START HERE
     // console.log("hi");
     // for(const student of students_jacksons) {
-    //   axios.get(`/api/users?name=${student}`,{
+    //   axios.get(`http://localhost:8080/api/users?name=${student}`,{
         
     //     headers: {
     //       Authorization: localStorage.getItem('token')
@@ -130,7 +130,7 @@ class Index extends React.Component {
     //       const usero = res.data.users[0]
     //       console.log(usero)
     //       const user = usero.name
-    //       axios.post(`/api/groups/5d8cf3fd8214f450bae16ca1/members/`, {
+    //       axios.post(`http://localhost:8080/api/groups/5d8cf3fd8214f450bae16ca1/members/`, {
     //         username: user
     //       }, {
     //         headers: {
@@ -149,7 +149,7 @@ class Index extends React.Component {
     //           //   memberType: "MEMBER"
     //           // });
     //           console.log(usere);
-    //           axios.post(`/api/users/${usere}/groups`, {
+    //           axios.post(`http://localhost:8080/api/users/${usere}/groups`, {
     //             group: {
     
                 
@@ -175,7 +175,7 @@ class Index extends React.Component {
 
     
     // let i = 0;
-    // axios.get(`/api/users/`).then(res => {
+    // axios.get(`http://localhost:8080/api/users/`).then(res => {
     //   console.log("TEST");
     //   if(res.status == 200) {
     //     const users = res.data;
@@ -193,7 +193,7 @@ class Index extends React.Component {
     if (window.Chart) {
       parseOptions(Chart, chartOptions());
     }
-    axios.get(`/api/announcements/recent`,{
+    axios.get(`http://localhost:8080/api/announcements/recent`,{
       headers: {
         Authorization: localStorage.getItem('token')
       }
@@ -206,7 +206,7 @@ class Index extends React.Component {
       }else{
         console.log("Unable to get this announcement by id")
       }
-      axios.get(`/api/users?name=${this.props.name}`,{
+      axios.get(`http://localhost:8080/api/users?name=${this.props.name}`,{
         headers: {
           Authorization: localStorage.getItem('token')
         }
@@ -218,12 +218,12 @@ class Index extends React.Component {
           firebase.database().ref("users").once('value', (val)=>{
             if(val.child(this.state.current_user['_id']).exists()){
                 console.log("DATA EXISTS");
-                firebase.database().ref("users").child(this.state.current_user['_id']).set(this.state.current_user).then(v=>{
+                // firebase.database().ref("users").child(this.state.current_user['_id']).set(this.state.current_user).then(v=>{
                   firebase.database().ref('users').child(this.state.current_user['_id']).child('status').set({
                     status: 'online',
                     last_changed: firebase.database.ServerValue.TIMESTAMP,
                   })
-                })
+                // })
             }
             else {console.log("NO FIREBASE USER FOUND");
               firebase.database().ref("users").child(this.state.current_user['_id']).set(this.state.current_user).then(v=>{
@@ -234,7 +234,7 @@ class Index extends React.Component {
               })
           }
           });
-          axios.get('/api/users/',{
+          axios.get('http://localhost:8080/api/users/',{
             headers: {
               Authorization: localStorage.getItem('token')
             }
@@ -298,7 +298,7 @@ class Index extends React.Component {
   onSubmit = (event) => {
     event.preventDefault();
     let announcement_id = "5da870f94db4be0a37de29b7"
-    axios.patch(`/api/announcements/${announcement_id}/`,  {
+    axios.patch(`http://localhost:8080/api/announcements/${announcement_id}/`,  {
       content: this.state.announcementContent,
       mini: this.state.announcementMini,
       pic: this.state.announcementPic
@@ -309,7 +309,7 @@ class Index extends React.Component {
     })
     .then(res => {
       if ( res.status === 200) {
-        axios.get(`/api/announcements/recent`,{
+        axios.get(`http://localhost:8080/api/announcements/recent`,{
           headers: {
             Authorization: localStorage.getItem('token')
           }
@@ -367,7 +367,7 @@ class Index extends React.Component {
         console.log("DETAILS")
         console.log(this.state.announcementContent, this.state.announcementMini)
         let announcement_id = "5d5e0effd782c7f9e44ea318"
-    axios.patch(`/api/announcements/${announcement_id}/`,  {
+    axios.patch(`http://localhost:8080/api/announcements/${announcement_id}/`,  {
       content: this.state.announcementContent,
       mini: this.state.announcementMini,
       pic: this.state.announcementPic
@@ -378,7 +378,7 @@ class Index extends React.Component {
     })
     .then(res => {
       if ( res.status === 200) {
-        axios.get(`/api/announcements/recent`,{
+        axios.get(`http://localhost:8080/api/announcements/recent`,{
           headers: {
             Authorization: localStorage.getItem('token')
           }

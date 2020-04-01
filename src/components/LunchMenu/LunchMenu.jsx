@@ -26,7 +26,7 @@ class LunchMenu extends React.Component {
     
 
     componentWillMount() {
-        axios.get('/api/lunchMenus/',{
+        axios.get('http://localhost:8080/api/lunchMenus/',{
             headers: {
               Authorization: localStorage.getItem('token')
             }
@@ -50,7 +50,7 @@ class LunchMenu extends React.Component {
     onSubmit = (event) => {
       event.preventDefault();
       let lunchMenu_id = "5d5f24448498fb0d52f30f93"
-      axios.patch(`/api/lunchMenus/${lunchMenu_id}/`,  {
+      axios.patch(`http://localhost:8080/api/lunchMenus/${lunchMenu_id}/`,  {
         images: []
       },{
         headers: {
@@ -59,7 +59,7 @@ class LunchMenu extends React.Component {
       })
       .then(res => {
         if ( res.status === 200) {
-          axios.get(`/api/lunchMenus/recent`,{
+          axios.get(`http://localhost:8080/api/lunchMenus/recent`,{
             headers: {
               Authorization: localStorage.getItem('token')
             }

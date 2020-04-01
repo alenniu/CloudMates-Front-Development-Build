@@ -60,7 +60,7 @@ class Tables extends React.Component {
   componentWillMount() {
     let paths = this.props.location.pathname.split("/")
     let group_id = paths[paths.length - 1]
-    axios.get(`/api/groups/${group_id}`, {
+    axios.get(`http://localhost:8080/api/groups/${group_id}`, {
       headers: {
         Authorization: localStorage.getItem('token')
       }
@@ -74,7 +74,7 @@ class Tables extends React.Component {
         } else {
           console.log("Unable to get this group")
         }
-        axios.get(`/api/users?name=${this.props.name}`, {
+        axios.get(`http://localhost:8080/api/users?name=${this.props.name}`, {
           headers: {
             Authorization: localStorage.getItem('token')
           }
@@ -102,7 +102,7 @@ class Tables extends React.Component {
     let paths = this.props.location.pathname.split("/")
     let group_id = paths[paths.length - 1]
     event.preventDefault();
-    axios.post(`/api/groups/${group_id}/announcements`, {
+    axios.post(`http://localhost:8080/api/groups/${group_id}/announcements`, {
       announcement: { content: this.state.new_announcement }
     }, {
       headers: {
@@ -113,7 +113,7 @@ class Tables extends React.Component {
         if (res.status === 200) {
           console.log("successfully added new announcement")
           // HARD REFRESH
-          axios.get(`/api/groups/${group_id}`, {
+          axios.get(`http://localhost:8080/api/groups/${group_id}`, {
             headers: {
               Authorization: localStorage.getItem('token')
             }
@@ -152,7 +152,7 @@ class Tables extends React.Component {
     let paths = this.props.location.pathname.split("/")
     let group_id = paths[paths.length - 1]
     console.log('will make request')
-    axios.put(`/api/groups/grouphead/${group_id}/`, {
+    axios.put(`http://localhost:8080/api/groups/grouphead/${group_id}/`, {
       ...body
     }, {
       headers: {
@@ -163,7 +163,7 @@ class Tables extends React.Component {
         if (res.status === 200) {
           console.log("successfully added new description")
           // HARD REFRESH
-          axios.get(`/api/groups/${group_id}`)
+          axios.get(`http://localhost:8080/api/groups/${group_id}`)
             .then(res => {
               if (res.status === 200) {
                 const data = res.data

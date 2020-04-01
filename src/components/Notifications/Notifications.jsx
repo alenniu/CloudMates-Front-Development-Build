@@ -52,7 +52,7 @@ class Notifications extends React.Component {
 
     async getNotifications() {
         console.log('getting nots')
-        await axios.get(`/api/notifications/${this.state.name}`,{
+        await axios.get(`http://localhost:8080/api/notifications/${this.state.name}`,{
             headers: {
               Authorization: localStorage.getItem('token')
             }
@@ -73,7 +73,7 @@ class Notifications extends React.Component {
             })
     }
     async addSeen(replyId) {
-        await axios.put(`/api/notifications/reply/${this.state.name}/${replyId}`)
+        await axios.put(`http://localhost:8080/api/notifications/reply/${this.state.name}/${replyId}`)
             .then(res => {
                 if (res.status === 200) {
                     const data = res.data

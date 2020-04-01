@@ -52,7 +52,7 @@ class Login extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    fetch('/api/auth/authenticate',  {
+    fetch('http://localhost:8080/api/auth/authenticate',  {
       method : 'POST',
       body: JSON.stringify(this.state),
       headers: {
@@ -64,6 +64,7 @@ class Login extends React.Component {
         res = await res.json()
         console.log(res)
         localStorage.setItem('token',res.token)
+        localStorage.setItem('id', res.id)
         console.log(this.props.history);
         this.props.history.push('/');
       } else if(res.status === 401) {

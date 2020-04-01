@@ -83,7 +83,7 @@ class AdminNavbar extends React.Component {
   async getusers() {
     if (localStorage.getItem('users') == undefined) {
       // if already cached dont get them 
-      await axios.get(`/api/users`, {
+      await axios.get(`http://localhost:8080/api/users`, {
         headers: {
           Authorization: localStorage.getItem('token')
         }
@@ -179,7 +179,7 @@ class AdminNavbar extends React.Component {
                     <span className="avatar avatar-sm rounded-circle">
                       <img
                         alt="..."
-                        src={`https://ui-avatars.com/api/?background=0D8ABC&color=fff&bold=true&name=${this.props.name}`}
+                        src={`https://ui-avatars.comhttp://localhost:8080/api/?background=0D8ABC&color=fff&bold=true&name=${this.props.name}`}
                       />
                     </span>
                     <Media className="ml-2 d-none d-lg-block">

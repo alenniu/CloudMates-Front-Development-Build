@@ -65,7 +65,7 @@
 //         let post_id = paths[paths.length-1]
 //         this.setState({ post_id })
 
-//         axios.get(`/api/posts/${post_id}`)
+//         axios.get(`http://localhost:8080/api/posts/${post_id}`)
 //         .then(res => {
 //           if (res.status === 200) {
 //             const data = res.data
@@ -75,7 +75,7 @@
 //             for(let i = 0; i < replies.length; i++){
 //               let reply = replies[i]
 //               let reply_username = reply.username
-//               axios.get(`/api/users/?name=${reply_username}`)
+//               axios.get(`http://localhost:8080/api/users/?name=${reply_username}`)
 //                .then(res => {
 //                  if(res.status === 200) {
 //                    const user = res.data.users[0]
@@ -91,7 +91,7 @@
 //           }else{
 //             console.log("Unable to get this post by id")
 //           }
-// axios.get(`/api/users?name=${this.props.name}`)
+// axios.get(`http://localhost:8080/api/users?name=${this.props.name}`)
 //         .then(res => {
 //           if (res.status === 200) {
 //             const user = res.data.users[0]
@@ -111,7 +111,7 @@
 //             username: this.props.name
 //           }
 //           this.setState({reply_content: ''})
-//           fetch(`/api/posts/${this.state.post_id}/replies`,  {
+//           fetch(`http://localhost:8080/api/posts/${this.state.post_id}/replies`,  {
 //             method : 'POST',
 //             body: JSON.stringify({
 //               replies: [new_reply]
@@ -122,7 +122,7 @@
 //           })
 //           .then(res => {
 //             if ( res.status === 200) {
-//               axios.get(`/api/posts/${this.state.post_id}`)
+//               axios.get(`http://localhost:8080/api/posts/${this.state.post_id}`)
 //               .then(res => {
 //                 if (res.status === 200) {
 //                   const data = res.data
@@ -146,11 +146,11 @@
 //       }
 
 //       removeOnClick(reply_id,reply_username) {
-//         axios.delete(`/api/posts/${this.state.post_id}/replies/${reply_id}`)
+//         axios.delete(`http://localhost:8080/api/posts/${this.state.post_id}/replies/${reply_id}`)
 //         .then(res => {
 //           if (res.status === 200) {
 //             this.changeUserPoints(-1,reply_username)
-//             axios.get(`/api/posts/${this.state.post_id}`)
+//             axios.get(`http://localhost:8080/api/posts/${this.state.post_id}`)
 //             .then(res => {
 //               if (res.status === 200) {
 //             const data = res.data
@@ -167,7 +167,7 @@
 
 //   changeUserPoints(delta,reply_username) {
 //     let user_name = reply_username
-//     axios.get(`/api/users?name=${user_name}`)
+//     axios.get(`http://localhost:8080/api/users?name=${user_name}`)
 //     .then(res => {
 //       if(res.status === 200) {
 //         let users = res.data.users
@@ -176,7 +176,7 @@
 //         let user_found = users[0]
 //         let user_id = user_found._id
 //         let new_points = user_found.points + delta
-//         axios.patch(`/api/users/${user_id}`, {points: new_points}, {})
+//         axios.patch(`http://localhost:8080/api/users/${user_id}`, {points: new_points}, {})
 //         .then(res => {
 //           if(res.status === 200) {
 //             console.log(`Succesfully incremenet points of user: ${user_name} by ${delta}`)
@@ -215,9 +215,9 @@
               
 //                 <Comment className='row'>
                   
-//                 {/* <Comment.Avatar as='a' src={`https://ui-avatars.com/api/?background=0D8ABC&color=fff&bold=true&rounded=true&name=${reply.username}` }/> */}
+//                 {/* <Comment.Avatar as='a' src={`https://ui-avatars.comhttp://localhost:8080/api/?background=0D8ABC&color=fff&bold=true&rounded=true&name=${reply.username}` }/> */}
 //                 <CardSemanticUI className='col-md-2 col-lg-2' style={{maxHeight: '40vh'}}>
-//                   <Image src={`https://ui-avatars.com/api/?background=0D8ABC&color=fff&bold=true&name=${reply.username}` } wrapped ui={false} />
+//                   <Image src={`https://ui-avatars.comhttp://localhost:8080/api/?background=0D8ABC&color=fff&bold=true&name=${reply.username}` } wrapped ui={false} />
 //                   <CardSemanticUI.Content>
 //                     <CardSemanticUI.Header>{reply.username}</CardSemanticUI.Header>
 //                     <CardSemanticUI.Meta>
@@ -379,7 +379,7 @@ class MentorDetails extends React.Component {
         let post_id = paths[paths.length-1]
         this.setState({ post_id })
 
-        axios.get(`/api/posts/${post_id}`,{
+        axios.get(`http://localhost:8080/api/posts/${post_id}`,{
           headers: {
             Authorization: localStorage.getItem('token')
           }
@@ -393,7 +393,7 @@ class MentorDetails extends React.Component {
             for(let i = 0; i < replies.length; i++){
               let reply = replies[i]
               let reply_username = reply.username
-              axios.get(`/api/users/?name=${reply_username}`,{
+              axios.get(`http://localhost:8080/api/users/?name=${reply_username}`,{
                 headers: {
                   Authorization: localStorage.getItem('token')
                 }
@@ -416,7 +416,7 @@ class MentorDetails extends React.Component {
           }else{
             console.log("Unable to get this post by id")
           }
-axios.get(`/api/users?name=${this.props.name}`,{
+axios.get(`http://localhost:8080/api/users?name=${this.props.name}`,{
   headers: {
     Authorization: localStorage.getItem('token')
   }
@@ -440,7 +440,7 @@ axios.get(`/api/users?name=${this.props.name}`,{
             username: this.props.name
           }
           this.setState({reply_content: ''})
-          fetch(`/api/posts/${this.state.post_id}/replies`,  {
+          fetch(`http://localhost:8080/api/posts/${this.state.post_id}/replies`,  {
             method : 'POST',
             body: JSON.stringify({
               replies: [new_reply]
@@ -452,7 +452,7 @@ axios.get(`/api/users?name=${this.props.name}`,{
           })
           .then(res => {
             if ( res.status === 200) {
-              axios.get(`/api/posts/${this.state.post_id}`,{
+              axios.get(`http://localhost:8080/api/posts/${this.state.post_id}`,{
                 headers: {
                   Authorization: localStorage.getItem('token')
                 }
@@ -484,7 +484,7 @@ axios.get(`/api/users?name=${this.props.name}`,{
       
 
       removeOnClick(reply_id,reply_username) {
-        axios.delete(`/api/posts/${this.state.post_id}/replies/${reply_id}`,{
+        axios.delete(`http://localhost:8080/api/posts/${this.state.post_id}/replies/${reply_id}`,{
           headers: {
             Authorization: localStorage.getItem('token')
           }
@@ -492,7 +492,7 @@ axios.get(`/api/users?name=${this.props.name}`,{
         .then(res => {
           if (res.status === 200) {
             this.changeUserPoints(-15,reply_username)
-            axios.get(`/api/posts/${this.state.post_id}`,{
+            axios.get(`http://localhost:8080/api/posts/${this.state.post_id}`,{
               headers: {
                 Authorization: localStorage.getItem('token')
               }
@@ -513,7 +513,7 @@ axios.get(`/api/users?name=${this.props.name}`,{
 
   changeUserPoints(delta,reply_username) {
     let user_name = reply_username
-    axios.get(`/api/users?name=${user_name}`,{
+    axios.get(`http://localhost:8080/api/users?name=${user_name}`,{
       headers: {
         Authorization: localStorage.getItem('token')
       }
@@ -525,7 +525,7 @@ axios.get(`/api/users?name=${this.props.name}`,{
         let user_found = users[0]
         let user_id = user_found._id
         let new_points = user_found.points + delta
-        axios.patch(`/api/users/${user_id}`, {points: new_points},{
+        axios.patch(`http://localhost:8080/api/users/${user_id}`, {points: new_points},{
           headers: {
             Authorization: localStorage.getItem('token')
           }
@@ -543,7 +543,7 @@ axios.get(`/api/users?name=${this.props.name}`,{
 
 // changeLiked(delta,reply_username) {
 //   let user_name = reply_username
-//   axios.get(`/api/users?name=${user_name}`)
+//   axios.get(`http://localhost:8080/api/users?name=${user_name}`)
 //   .then(res => {
 //     if(res.status === 200) {
 //       let users = res.data.users
@@ -551,7 +551,7 @@ axios.get(`/api/users?name=${this.props.name}`,{
 //       let user_found = users[0]
 //       let user_id = user_found._id
 //       let new_points = user_found.points + delta
-//       axios.patch(`/api/users/${user_id}`, {points: new_points}, {})
+//       axios.patch(`http://localhost:8080/api/users/${user_id}`, {points: new_points}, {})
       
 //       .then(res => {
 //         if(res.status === 200) {
@@ -591,7 +591,7 @@ axios.get(`/api/users?name=${this.props.name}`,{
             return (
               
                 <Comment className='row'>
-                {/* <Comment.Avatar as='a' src={`https://ui-avatars.com/api/?background=0D8ABC&color=fff&bold=true&rounded=true&name=${reply.username}` }/> */}
+                {/* <Comment.Avatar as='a' src={`https://ui-avatars.comhttp://localhost:8080/api/?background=0D8ABC&color=fff&bold=true&rounded=true&name=${reply.username}` }/> */}
                 <CardSemanticUI className='col-md-2 col-lg-2' style={{maxHeight: '45vh'}}>
                 {/* <Link style={(post.readOnly) ? {color: "red"}: {}}
                               to={{ pathname: '/admin/mentor/'+post._id}}
@@ -599,7 +599,7 @@ axios.get(`/api/users?name=${this.props.name}`,{
                                 {post._id}
                               </Link> */}
 
-                  <Image src={`https://ui-avatars.com/api/?background=0D8ABC&color=fff&bold=true&name=${reply.username}` } wrapped ui={false} />
+                  <Image src={`https://ui-avatars.comhttp://localhost:8080/api/?background=0D8ABC&color=fff&bold=true&name=${reply.username}` } wrapped ui={false} />
                   <CardSemanticUI.Content>
                     <CardSemanticUI.Header style={(this.getUser(reply.username).points > 999) ? {color: "blue"}:  (this.getUser(reply.username).points > 699) ? {color: "orange"}: (this.getUser(reply.username).points > 499) ? {color: "gray"}:{}}>{reply.username}</CardSemanticUI.Header>
                     <CardSemanticUI.Meta>

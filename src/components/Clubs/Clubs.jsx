@@ -44,7 +44,7 @@ class Clubs extends React.Component {
 
 
   componentWillMount() {
-    axios.get('/api/groups/', {
+    axios.get('http://localhost:8080/api/groups/', {
       headers: {
         Authorization: localStorage.getItem('token')
       }
@@ -58,7 +58,7 @@ class Clubs extends React.Component {
         } else {
           console.log("Unable to get all groups")
         }
-        axios.get(`/api/users?name=${this.props.name}`, {
+        axios.get(`http://localhost:8080/api/users?name=${this.props.name}`, {
           headers: {
             Authorization: localStorage.getItem('token')
           }
@@ -76,7 +76,7 @@ class Clubs extends React.Component {
   }
 
   onJoin(group_id) {
-    axios.post(`/api/groups/${group_id}/members/`, {
+    axios.post(`http://localhost:8080/api/groups/${group_id}/members/`, {
       username: this.props.name
     }, {
       headers: {
@@ -85,7 +85,7 @@ class Clubs extends React.Component {
     })
       .then(res => {
         if (res.status === 200) {
-          axios.post(`/api/users/${this.state.current_user._id}/groups`, {
+          axios.post(`http://localhost:8080/api/users/${this.state.current_user._id}/groups`, {
             group: {
               groupID: group_id,
               memberType: "MEMBER"
@@ -100,7 +100,7 @@ class Clubs extends React.Component {
                 console.log("successfully update user's group metadata")
               }
               // Hard refresh
-              axios.get('/api/groups/', {
+              axios.get('http://localhost:8080/api/groups/', {
                 headers: {
                   Authorization: localStorage.getItem('token')
                 }
@@ -114,7 +114,7 @@ class Clubs extends React.Component {
                   } else {
                     console.log("Unable to get all groups")
                   }
-                  axios.get(`/api/users?name=${this.props.name}`, {
+                  axios.get(`http://localhost:8080/api/users?name=${this.props.name}`, {
                     headers: {
                       Authorization: localStorage.getItem('token')
                     }
@@ -147,7 +147,7 @@ class Clubs extends React.Component {
 
   createGroup() {
     if(this.state.title =='') return
-    axios.post(`/api/groups`, {
+    axios.post(`http://localhost:8080/api/groups`, {
       title: this.state.title
     }, {
       headers: {

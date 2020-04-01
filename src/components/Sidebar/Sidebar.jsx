@@ -107,23 +107,27 @@ class Sidebar extends React.Component {
 
 
   componentWillMount() {
-    let name = localStorage.getItem('username');
+    let name = localStorage.getItem('id');
+    console.log(name);
     let that = this;
 
-    axios.get(`/api/users?name=${name}`, {
+    axios.get(`http://localhost:8080/api/users/${name}`, {
       headers: {
         Authorization: localStorage.getItem('token')
       }
     })
       .then(res => {
         if (res.status === 200) {
-          const user = res.data.users[0]
+          console.log(res)
+          const user = res.data.user
+          console.log(user, " here is it")
           this.setState({ current_user: user });
           console.log(this.state.current_user)
-          let id = this.state.current_user['_id'];
+          let id = user['_id'];
           console.log(id);
           firebase.database().ref('users').once('value', (val) => {
             if (val.child(id).exists()) {
+              console.log("asdasd", val.val())
               this.setState({
                 currentUser: val.child(id).val()
               });
@@ -207,7 +211,7 @@ class Sidebar extends React.Component {
   async getusers() {
     if (localStorage.getItem('users') == undefined) {
       // if already cached dont get them 
-      await axios.get(`/api/users`, {
+      await axios.get(`http://localhost:8080/api/users`, {
         headers: {
           Authorization: localStorage.getItem('token')
         }
@@ -232,7 +236,7 @@ class Sidebar extends React.Component {
     }
   }
   async checkForNewNots() {
-    await axios.get(`/api/notifications/new/${this.state.name}`, {
+    await axios.get(`http://localhost:8080/api/notifications/new/${this.state.name}`, {
       headers: {
         Authorization: localStorage.getItem('token')
       }
